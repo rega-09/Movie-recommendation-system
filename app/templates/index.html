@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CineAI — Discover Your Next Favourite Film</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/main.css" />
+</head>
+<body>
+
+<!-- ── Nav ── -->
+<nav class="nav">
+  <a href="/" class="nav-logo">
+    <span class="logo-icon">▶</span>
+    <span>CineAI</span>
+  </a>
+  <div class="nav-actions">
+    <a href="/api/docs" target="_blank" class="nav-link">API Docs</a>
+    <button id="theme-toggle" class="theme-btn" aria-label="Toggle theme" title="Toggle light/dark">
+      <span class="theme-icon">☾</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── Hero ── -->
+<section class="hero">
+  <div class="hero-bg-reel" aria-hidden="true">
+    <div class="reel-strip reel-top"></div>
+    <div class="reel-strip reel-bottom"></div>
+  </div>
+
+  <div class="hero-content">
+    <p class="hero-eyebrow">AI-Powered Movie Discovery</p>
+    <h1 class="hero-headline">
+      Find films that feel like<br/>
+      <em>your kind of story</em>
+    </h1>
+    <p class="hero-sub">
+      Tell us a movie you love. CineAI analyses 4 800+ films by genre,
+      cast, theme &amp; narrative DNA to surface ten you'll want to watch next.
+    </p>
+
+    <!-- Search bar -->
+    <div class="search-wrap">
+      <div class="search-box" role="search">
+        <span class="search-icon" aria-hidden="true">🎬</span>
+        <input
+          id="movie-input"
+          type="text"
+          class="search-input"
+          placeholder="e.g. Inception, The Dark Knight, Avatar…"
+          autocomplete="off"
+          spellcheck="false"
+          aria-label="Movie title"
+          aria-autocomplete="list"
+          aria-controls="suggestions-list"
+        />
+        <button id="search-btn" class="search-btn" aria-label="Get recommendations">
+          <span class="btn-label">Recommend</span>
+          <span class="btn-arrow">→</span>
+        </button>
+      </div>
+      <ul id="suggestions-list" class="suggestions" role="listbox" aria-label="Movie suggestions" hidden></ul>
+    </div>
+
+    <p class="search-hint">Try: <button class="hint-chip" data-title="avatar">Avatar</button> · <button class="hint-chip" data-title="The Dark Knight">The Dark Knight</button> · <button class="hint-chip" data-title="Interstellar">Interstellar</button></p>
+  </div>
+</section>
+
+<!-- ── Results section ── -->
+<section id="results-section" class="results-section" hidden>
+  <div class="results-header">
+    <div>
+      <p class="results-label">Because you liked</p>
+      <h2 id="results-title" class="results-movie-title"></h2>
+    </div>
+    <button id="clear-btn" class="clear-btn">Search again</button>
+  </div>
+
+  <!-- Query movie card -->
+  <div id="query-card-wrap"></div>
+
+  <h3 class="recs-heading">You might also like</h3>
+  <div id="recommendations-grid" class="recs-grid"></div>
+</section>
+
+<!-- ── How it works ── -->
+<section class="how-section">
+  <div class="how-inner">
+    <h2 class="how-title">How CineAI works</h2>
+    <div class="steps-grid">
+      <div class="step">
+        <div class="step-num">01</div>
+        <h3>Metadata fusion</h3>
+        <p>We merge genre tags, plot keywords, lead cast and director into a single rich text fingerprint per film.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <h3>NLP vectorisation</h3>
+        <p>Porter stemming normalises vocabulary, then a 5 000-feature bag-of-words model encodes every film's fingerprint.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <h3>Cosine similarity</h3>
+        <p>We measure the angular distance between vectors — films pointing in the same direction share the same cinematic DNA.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── Footer ── -->
+<footer class="footer">
+  <p>CineAI · Built with FastAPI, scikit-learn &amp; the TMDB 5000 dataset</p>
+  <p><a href="/api/docs" target="_blank">API Documentation</a></p>
+</footer>
+
+<!-- ── Loading overlay ── -->
+<div id="loading-overlay" class="loading-overlay" hidden aria-live="polite">
+  <div class="loading-content">
+    <div class="film-loader" aria-hidden="true">
+      <div class="frame"></div><div class="frame"></div>
+      <div class="frame"></div><div class="frame"></div>
+      <div class="frame"></div><div class="frame"></div>
+    </div>
+    <p class="loading-text">Analysing cinematic fingerprints…</p>
+  </div>
+</div>
+
+<!-- ── Toast ── -->
+<div id="toast" class="toast" role="alert" aria-live="assertive" hidden></div>
+
+<script src="/static/js/main.js"></script>
+</body>
+</html>
