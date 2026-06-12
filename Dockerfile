@@ -15,7 +15,7 @@ RUN pip install --no-cache-dir --upgrade pip \
 # Download NLTK data
 RUN python -c "import nltk; nltk.download('punkt', quiet=True); nltk.download('stopwords', quiet=True)"
 
-# ── Runtime stage ─────────────────────────────────────────────────────────
+# ── Runtime stage ──────────────────────────────────────────────────
 FROM python:3.11-slim AS runtime
 
 WORKDIR /app
