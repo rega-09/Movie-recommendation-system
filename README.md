@@ -185,7 +185,7 @@ gunicorn app.main:app -w 4 -k uvicorn.workers.UvicornWorker \
 2. **Feature extraction** — parses JSON columns for genres, keywords, top-3 cast, director
 3. **Tag construction** — concatenates all features into one text blob per film
 4. **Stemming** — Porter stemmer normalises vocabulary ("running" → "run")
-5. **Vectorisation** — `CountVectorizer` (5 000 features, English stopwords removed)
+5. **Vectorisation** — `CountVectorizer` (5000 features, English stopwords removed)
 6. **Similarity** — cosine similarity matrix (4 800 × 4 800)
 7. **Query** — lookup movie index → sort similarity scores → return top-N
 
