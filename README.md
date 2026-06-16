@@ -9,7 +9,7 @@ Given any movie title from the TMDB 5000 dataset, CineAI analyses plot keywords,
 ## ✨ Features
 
 - **Content-based filtering** — metadata fusion + Porter stemming + CountVectorizer + cosine similarity
-- **Autocomplete search** — real-time prefix search as you type
+- **Autocomplete search** — real-time prefix search as you type.
 - **TMDB poster fetching** — optional live poster images via TMDB API
 - **Dark / light mode** — preference persisted in localStorage
 - **Fully responsive** — works on mobile, tablet, desktop
