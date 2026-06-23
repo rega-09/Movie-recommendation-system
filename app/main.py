@@ -36,6 +36,7 @@ async def lifespan(app: FastAPI):
         raise
     yield
     logger.info("👋  CineAI shutting down")
+    logger.info
 
 
 # ── App ────────────────────────────────────────────────────────────────────
