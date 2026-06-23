@@ -11,7 +11,7 @@ from fastapi.responses import JSONResponse
 from app.routes import recommendation, pages
 from app.services.recommender import recommender_service
 
-# ── Logging ────────────────────────────────────────────────────────────────
+# ── Logging ────────────────────────────────────────────────────────────
 logging.basicConfig(
     level=logging.INFO,
     format="%(asctime)s │ %(levelname)-8s │ %(name)s │ %(message)s",
@@ -20,7 +20,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 
-# ── Lifespan ───────────────────────────────────────────────────────────────
+# ── Lifespan ──────────────────────────────────────────────────────────--
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     """Load the recommendation model once at startup."""
